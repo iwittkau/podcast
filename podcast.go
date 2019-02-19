@@ -428,9 +428,7 @@ type podcastWrapper struct {
 	Channel  *Podcast
 }
 
-type EncoderFunc func(io.Writer, interface{}) error
-
-var encoder EncoderFunc = func(w io.Writer, o interface{}) error {
+var encoder = func(w io.Writer, o interface{}) error {
 	e := xml.NewEncoder(w)
 	e.Indent("", "  ")
 	if err := e.Encode(o); err != nil {
@@ -439,9 +437,7 @@ var encoder EncoderFunc = func(w io.Writer, o interface{}) error {
 	return nil
 }
 
-type ParseAuthorNameEmailFunc func(*Author) string
-
-var parseAuthorNameEmail ParseAuthorNameEmailFunc = func(a *Author) string {
+var parseAuthorNameEmail = func(a *Author) string {
 	var author string
 	if a != nil {
 		author = a.Email

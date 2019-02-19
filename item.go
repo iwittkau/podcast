@@ -108,9 +108,7 @@ func (i *Item) AddDuration(durationInSeconds int64) {
 	i.IDuration = parseDuration(durationInSeconds)
 }
 
-type ParseDurationFunc func(duration int64) string
-
-var parseDuration ParseDurationFunc = func(duration int64) string {
+var parseDuration = func(duration int64) string {
 	h := duration / 3600
 	duration = duration % 3600
 
