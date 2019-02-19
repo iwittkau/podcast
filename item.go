@@ -136,9 +136,7 @@ var parseDuration = func(duration int64) string {
 	return fmt.Sprintf("%d:%02d", m, s)
 }
 
-type ParseDateRFC1123Z func(t *time.Time) string
-
-var parseDateRFC1123Z ParseDateRFC1123Z = func(t *time.Time) string {
+var parseDateRFC1123Z = func(t *time.Time) string {
 	if t != nil && !t.IsZero() {
 		return t.Format(time.RFC1123Z)
 	}
